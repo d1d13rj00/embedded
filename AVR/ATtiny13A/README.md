@@ -90,6 +90,8 @@ avr-ld.exe -o PROG1-lightLED.elf PROG1-lightLED.o
 avr-objcopy.exe --output-target=ihex PROG1-lightLED.elf PROG1-lightLED.hex
 ```
 
+If everything worked s expected, you should have a file called PROG1-lightLED.hex as final ouput of those 3 commands.
+
 ### Uploading code 
 
 1. Open ProgISP on Windows
