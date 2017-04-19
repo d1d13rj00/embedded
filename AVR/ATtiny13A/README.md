@@ -42,27 +42,28 @@ ProgISP can be downloaded from Electrogradon website.
 
 ### Hardware setup
 
+A LED should be connected to PB0 and GND, after programming the ATtiny13A
+
 ### Assembly source code
 
 ```Assembly
 ; Defining ports addresses to ease coding
-.EQN DDRB ,0x17
-.EQN PORTB,0x18
+
+.EQU DDRB ,0x17     ; Port direction (INPUT or OUTPUT)
+.EQU PORTB,0x18     ; PORT state (HIGH or LOW)
 
 ; Tell the assembler that our code will execute at address 0x0 in memory
 .org 0x0
 
 ; Defining Interrup Vector table
-    rjmp RESET	; RESET interrupt handler - Execution starts here at boot
+    rjmp RESET      ; RESET interrupt handler - Execution starts here at boot
 
-;Arriving here from the vector handler
 RESET:
-    sbi DDRB,0	    ; Set PB0 to OUTPUT mode
-    sbi PORTB,0	    ; Set PB0 to HIGH
+    sbi DDRB,0      ; Set PIN0 to OUTPUT mode
+    sbi PORTB,0     ; Set PIN0 to HIGH
 
 END:
-    rjmp END	    ; Loop endlessly :)
-
+    rjmp END        ; Loop endlessly :)
 ```
 
 This can be done with the AVR toolchain by using the following steps : 
@@ -82,8 +83,11 @@ set PATH=%PATH%;C:\WinAVR-20100110\bin\
 ```
 
 ### Assembling: 
-```
 
+```
+avr-as.exe -mmcu=attiny13a -o PROG1-lightLED.o PROG1-lightLED.s
+avr-ld.exe -o PROG1-lightLED.elf PROG1-lightLED.o 
+avr-objcopy.exe --output-target=ihex PROG1-lightLED.elf PROG1-lightLED.hex
 ```
 
 ### Uploading code 
@@ -92,8 +96,10 @@ set PATH=%PATH%;C:\WinAVR-20100110\bin\
 2. Plug you USB ISP to your computer
     * At this point, you shoud see an update on ProgISP console indicating that it recognized the device (Something like ZF-008 HV Programmer)
 3. Select 'ATtiny13A' as device
-4. Load flash (the HEX file created previously)
+4. Load flash (PROG1-lightLED.hex)
 5. Click on Auto to upload the code (The chip will be erased and rewritten)
+
+After successfull upload, your LED should light ! :)
 
 ## References
  * [ATtiny13A datasheet](www.atmel.com/images/doc8126.pdf)

@@ -1,6 +1,7 @@
 ; Defining ports addresses to ease coding
-.EQN DDRB ,0x17	    ; Port direction (INPUT or OUTPUT)
-.EQN PORTB,0x18	    ; PORT state (HIGH or LOW)
+
+.EQU DDRB ,0x17	    ; Port direction (INPUT or OUTPUT)
+.EQU PORTB,0x18	    ; PORT state (HIGH or LOW)
 
 ; Tell the assembler that our code will execute at address 0x0 in memory
 .org 0x0
