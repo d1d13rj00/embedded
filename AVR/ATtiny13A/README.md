@@ -31,13 +31,26 @@ ProgISP can be downloaded from Electrogradon website.
 
 ## Your first code 
 
-### Blink a led
+### Light a led
 
 ```Assembly
 .include "iotn13a.h"
-; Defining ports
 
-.EQN DDBR,
-.EQN PORTB
+; Defining ports addresses
+.EQN DDRB ,0x17
+.EQN PORTB,0x18
+
+; Tell the assembler that our code will execute at address 0x0 in memory
+.org 0x0
+
+; Defining Interrup Vector table
+    rjmp RESET	; RESET interrupt handler - This MUST be defined as the microcontroller will start execution here.
+
+RESET:
+    sbi DDRB,0	    ; Set PIN0 to OUTPUT mode
+    sbi PORTB,0	    ; Set PIN0 to HIGH
+
+END:
+    rjmp END	    ; Loop endlessly :)
 
 ```
