@@ -11,7 +11,7 @@ Some tools provided with the package are
  * Some commn apps usually found on linux like wget, ls, md5sum and much more ! 
  * A graphical text-editor oriented towards coding, automating builds etc...
  * AVRdude for uploading your code to the microcontroller.
- * Include files for a big list of AVR microcontrollers. The file avr/include/avr/iotn13a.h will be used in this project.
+ * Include files for a big list of AVR microcontrollers.
 
 I personally prefer text editors like VIM which can be also installed on Windows.
 
@@ -95,7 +95,7 @@ If everything worked s expected, you should have a file called PROG1-lightLED.he
 ### Uploading code 
 
 1. Open ProgISP on Windows
-2. Plug you USB ISP to your computer
+2. Plug the USB ISP to your computer
     * At this point, you shoud see an update on ProgISP console indicating that it recognized the device (Something like ZF-008 HV Programmer)
 3. Select 'ATtiny13A' as device
 4. Load flash (PROG1-lightLED.hex)
