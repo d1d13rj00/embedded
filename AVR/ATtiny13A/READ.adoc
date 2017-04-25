@@ -1,3 +1,11 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
 # AVR ATtiny13A
 
 ## Toolchain
@@ -6,14 +14,18 @@
 
 Download WinAVR which contains all tools needed to build your applications. It will automatically updated your PATH so that those tools can be run from any folder.
 
-Some tools provided with the package are 
+Some tools provided with the package are: 
+
  * GNU GCC for C and C++
  * Some commn apps usually found on linux like wget, ls, md5sum and much more ! 
  * A graphical text-editor oriented towards coding, automating builds etc...
  * AVRdude for uploading your code to the microcontroller.
  * Include files for a big list of AVR microcontrollers.
 
+[NOTE]
+====
 I personally prefer text editors like VIM which can be also installed on Windows.
+====
 
 ### Linux
 
@@ -94,12 +106,18 @@ If everything worked s expected, you should have a file called PROG1-lightLED.he
 
 ### Uploading code 
 
-1. Open ProgISP on Windows
-2. Plug the USB ISP to your computer
-    * At this point, you shoud see an update on ProgISP console indicating that it recognized the device (Something like ZF-008 HV Programmer)
-3. Select 'ATtiny13A' as device
-4. Load flash (PROG1-lightLED.hex)
-5. Click on Auto to upload the code (The chip will be erased and rewritten)
+ . Open ProgISP on Windows
+ . Plug the USB ISP to your computer
+
+[NOTE]
+====
+At this point, you shoud see an update on ProgISP console indicating that it recognized the device (Something like ZF-008 HV Programmer)
+====
+
+[start=3]
+ . Select 'ATtiny13A' as device
+ . Load flash (PROG1-lightLED.hex)
+ . Click on Auto to upload the code (The chip will be erased and rewritten)
 
 After successfull upload, your LED should light ! :)
 
