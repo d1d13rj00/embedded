@@ -3,6 +3,8 @@
 ; Author : Didier Michel JOOMUN
 ;-----------------------------------------------------------
 
+;FUSEBIT : CKDIV8 = 0
+
 ; Defining ports addresses to ease coding
 
 .EQU PINB, 0x16	    ; PORT state (HIGH or LOW)
@@ -21,13 +23,25 @@ RESET:
 
 END:
     rcall DELAY
-    sbi PINB0,0	    ; Triggers the PIN. Refer to section 10.2.2 in ATtiny13A datasheet.
+    sbi PINB,0	    ; Triggers the PIN. Refer to section 10.2.2 in ATtiny13A datasheet.
     rjmp END	    ; Loop endlessly :)
 
 DELAY:
     ; We want our LED to toggle 2 times per second (1 toggle every 500ms)
+    push r16	    ; save registers
+    push r17	    ; save registers
+    ldi r17,0xFF    ; Initialize the counter with a big value
+DEC17_LOOP:
     ldi r16,0xFF    ; Initialize the counter with a big value
-DEC_LOOP:
+    dec r17
+    tst r17
+    breq DEC_END
+DEC16_LOOP:
     dec r16
-
-    reti
+    tst r16	    ; test if zero
+    breq DEC17_LOOP
+    rjmp DEC16_LOOP
+DEC_END:
+    pop r17
+    pop r16
+    ret
