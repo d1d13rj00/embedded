@@ -103,6 +103,9 @@ If everything worked s expected, you should have a file called PROG1-lightLED.he
 
 After successfull upload, your LED should light ! :)
 
+## More projects
+ * [Blinking LED with counters](https://github.com/d1d13rj00/embedded/blob/master/AVR/ATtiny13A/src/PROG2-blinkLED.s)
+
 ## References
  * [ATtiny13A datasheet](www.atmel.com/images/doc8126.pdf)
  * [AVR Instruction Set Manual](www.atmel.com/images/Atmel-0856-AVR-Instruction-Set-Manual.pdf)
