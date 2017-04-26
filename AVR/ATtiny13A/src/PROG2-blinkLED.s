@@ -23,7 +23,7 @@ RESET:
 
 END:
     rcall DELAY
-    sbi PINB,0	    ; Triggers the PIN. Refer to section 10.2.2 in ATtiny13A datasheet.
+    sbi PINB,0	    ; Toggles the PIN. Refer to section 10.2.2 in ATtiny13A datasheet.
     rjmp END	    ; Loop endlessly :)
 
 DELAY:
